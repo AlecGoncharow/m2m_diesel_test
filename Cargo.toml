@@ -1,5 +1,5 @@
 [package]
-name = "m2m-diesel-test"
+name = "m2m_diesel_test"
 version = "0.1.0"
 authors = ["Alec Goncharow <Alec.Goncharow@gmail.com>"]
 edition = "2018"
