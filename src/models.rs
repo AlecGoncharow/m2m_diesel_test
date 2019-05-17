@@ -1,3 +1,4 @@
+use crate::schema::*;
 
 #[derive(Queryable, Debug)]
 pub struct Item {
@@ -14,18 +15,21 @@ pub struct NewItem<'a> {
 }
 
 #[derive(Queryable, Insertable, Debug)]
+#[table_name = "item_bar"]
 pub struct ItemBar {
     pub id: i32,
-    pub number: Option(i32),
+    pub number: Option<i32>,
 }
 
 #[derive(Queryable, Insertable, Debug)]
+#[table_name = "item_foo"]
 pub struct ItemFoo {
     pub id: i32,
-    pub text: Option(String)
+    pub text: Option<String>
 }
 
 #[derive(Queryable, Insertable, Debug)]
+#[table_name = "item_tag"]
 pub struct ItemTag {
     item_id: i32,
     tag_id: i32,
@@ -40,21 +44,23 @@ pub struct Tag {
 }
 
 #[derive(Insertable, Debug)]
-#[table_name = "item"]
+#[table_name = "tag"]
 pub struct NewTag<'a> {
     pub instance_of: i32,
     pub title: &'a str,
 }
 
 #[derive(Queryable, Insertable, Debug)]
+#[table_name = "tag_bar"]
 pub struct TagBar {
     pub id: i32,
-    pub number: Option(i32),
+    pub number: Option<i32>,
 }
 
 #[derive(Queryable, Insertable, Debug)]
+#[table_name = "tag_foo"]
 pub struct TagFoo {
     pub id: i32,
-    pub text: Option(String)
+    pub text: Option<String>
 }
 

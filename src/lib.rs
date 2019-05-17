@@ -1,3 +1,6 @@
+#[macro_use]
+extern crate diesel;
+
 use diesel::{pg::PgConnection, prelude::*};
 use std::env;
 use iron::{IronResult, Response, Request, status};
