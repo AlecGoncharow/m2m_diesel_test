@@ -7,6 +7,7 @@ use iron::{IronResult, Response, Request, status};
 
 pub mod schema;
 pub mod models;
+pub mod glue;
 
 pub fn establish_connection() -> PgConnection {
     let data_base_url = std::env::var("DATABASE_URL").expect("DATABASE_URL is not set");

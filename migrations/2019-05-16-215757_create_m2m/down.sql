@@ -1,1 +1,1 @@
-DROP TABLE item_tag;
+DROP TABLE item_tags;

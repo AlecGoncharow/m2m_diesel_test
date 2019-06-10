@@ -1,5 +1,19 @@
 table! {
-    item (id) {
+    item_bars (id) {
+        id -> Int4,
+        number -> Nullable<Int4>,
+    }
+}
+
+table! {
+    item_foos (id) {
+        id -> Int4,
+        text -> Nullable<Text>,
+    }
+}
+
+table! {
+    items (id) {
         id -> Int4,
         instance_of -> Int4,
         title -> Text,
@@ -7,21 +21,7 @@ table! {
 }
 
 table! {
-    item_bar (id) {
-        id -> Int4,
-        number -> Nullable<Int4>,
-    }
-}
-
-table! {
-    item_foo (id) {
-        id -> Int4,
-        text -> Nullable<Text>,
-    }
-}
-
-table! {
-    item_tag (item_id, tag_id) {
+    item_tags (item_id, tag_id) {
         item_id -> Int4,
         tag_id -> Int4,
         value -> Int4,
@@ -29,36 +29,36 @@ table! {
 }
 
 table! {
-    tag (id) {
-        id -> Int4,
-        instance_of -> Int4,
-        title -> Text,
-    }
-}
-
-table! {
-    tag_bar (id) {
+    tag_bars (id) {
         id -> Int4,
         number -> Nullable<Int4>,
     }
 }
 
 table! {
-    tag_foo (id) {
+    tag_foos (id) {
         id -> Int4,
         text -> Nullable<Text>,
     }
 }
 
-joinable!(item_tag -> item (item_id));
-joinable!(item_tag -> tag (tag_id));
+table! {
+    tags (id) {
+        id -> Int4,
+        instance_of -> Int4,
+        title -> Text,
+    }
+}
+
+joinable!(item_tags -> items (item_id));
+joinable!(item_tags -> tags (tag_id));
 
 allow_tables_to_appear_in_same_query!(
-    item,
-    item_bar,
-    item_foo,
-    item_tag,
-    tag,
-    tag_bar,
-    tag_foo,
+    item_bars,
+    item_foos,
+    items,
+    item_tags,
+    tag_bars,
+    tag_foos,
+    tags,
 );
