@@ -4,11 +4,11 @@ use crate::schema::*;
 pub struct Item {
     pub id: i32,
     pub instance_of: i32,
-    pub title: String
+    pub title: String,
 }
 
 #[derive(Insertable, Debug)]
-#[table_name="items"]
+#[table_name = "items"]
 pub struct NewItem<'a> {
     pub instance_of: i32,
     pub title: &'a str,
@@ -23,7 +23,7 @@ pub struct ItemBar {
 #[derive(Queryable, Insertable, Debug)]
 pub struct ItemFoo {
     pub id: i32,
-    pub text: Option<String>
+    pub text: Option<String>,
 }
 
 #[derive(Queryable, Insertable, Debug)]
@@ -37,11 +37,11 @@ pub struct ItemTag {
 pub struct Tag {
     pub id: i32,
     pub instance_of: i32,
-    pub title: String
+    pub title: String,
 }
 
 #[derive(Insertable, Debug)]
-#[table_name="tags"]
+#[table_name = "tags"]
 pub struct NewTag<'a> {
     pub instance_of: i32,
     pub title: &'a str,
@@ -56,6 +56,5 @@ pub struct TagBar {
 #[derive(Queryable, Insertable, Debug)]
 pub struct TagFoo {
     pub id: i32,
-    pub text: Option<String>
+    pub text: Option<String>,
 }
-

@@ -1,5 +1,5 @@
 use crate::models::*;
-use diesel::{PgConnection, prelude::*};
+use diesel::{prelude::*, PgConnection};
 
 pub enum ItemType {
     Foo,
@@ -11,7 +11,7 @@ impl From<i32> for ItemType {
         match type_num {
             1 => ItemType::Foo,
             2 => ItemType::Bar,
-            _ => panic!(format!("type num not support: {}", type_num))
+            _ => panic!(format!("type num not support: {}", type_num)),
         }
     }
 }
@@ -33,7 +33,7 @@ pub struct GluedItem {
     pub text: Option<String>,
 }
 
-trait ResolvableItem: {
+trait ResolvableItem {
     fn resolve(self, db_conn: &PgConnection) -> GluedItem;
 }
 
@@ -50,7 +50,7 @@ impl ResolvableItem for Item {
 
                 let item = val.pop().expect(&format!("No id: {}", self.id));
 
-                return GluedItem {
+                GluedItem {
                     id: self.id,
                     instance_of: ItemType::Foo,
                     title: self.title,
@@ -68,7 +68,7 @@ impl ResolvableItem for Item {
 
                 let item = val.pop().expect(&format!("No id: {}", self.id));
 
-                return GluedItem {
+                GluedItem {
                     id: self.id,
                     instance_of: ItemType::Foo,
                     title: self.title,

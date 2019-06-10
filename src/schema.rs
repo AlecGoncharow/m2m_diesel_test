@@ -54,11 +54,5 @@ joinable!(item_tags -> items (item_id));
 joinable!(item_tags -> tags (tag_id));
 
 allow_tables_to_appear_in_same_query!(
-    item_bars,
-    item_foos,
-    items,
-    item_tags,
-    tag_bars,
-    tag_foos,
-    tags,
+    item_bars, item_foos, items, item_tags, tag_bars, tag_foos, tags,
 );

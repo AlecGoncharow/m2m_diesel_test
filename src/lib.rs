@@ -2,12 +2,12 @@
 extern crate diesel;
 
 use diesel::{pg::PgConnection, prelude::*};
+use iron::{status, IronResult, Request, Response};
 use std::env;
-use iron::{IronResult, Response, Request, status};
 
-pub mod schema;
-pub mod models;
 pub mod glue;
+pub mod models;
+pub mod schema;
 
 pub fn establish_connection() -> PgConnection {
     let data_base_url = std::env::var("DATABASE_URL").expect("DATABASE_URL is not set");
